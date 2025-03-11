@@ -7,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <H1>CESPED</H1>
+
+    @foreach($credentials as $credential)
+        <h1>{{$credential->name}}</h1>
+
+
+    
+    @endforeach
+    <h1>CESPED</h1>
 </body>
 </html>
