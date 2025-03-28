@@ -6,7 +6,7 @@ use App\Models\Credentials;
 use Faker\Factory as Faker;
 
 class CredentialsSeeder extends Seeder
-{
+{     
     public function run()
     {
         $faker = Faker::create();

@@ -45,5 +45,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    protected $primaryKey = 'SIP';
+    /**
+     * Get the credentials for the user.
+     */
+    public function credentials()
+    {
+        return $this->hasMany(credentials::class);
+    }
+
+    public function citas()
+    {
+        return $this->hasMany(cita::class);
+    }
+    // protected $primaryKey = 'SIP';
 }

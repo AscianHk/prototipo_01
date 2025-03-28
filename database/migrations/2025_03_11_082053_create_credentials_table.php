@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\datos;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('credentials', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class);
+            // $table->foreignIdFor(datos::class);
             $table->string('name');
             $table->string('surname');
             $table->date('Fecha_Nacimiento');
-            $table->foreignIdFor(User::class)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
