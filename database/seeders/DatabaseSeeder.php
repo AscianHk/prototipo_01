@@ -37,9 +37,18 @@ class DatabaseSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             DB::table('citas')->insert([
             'user_id' => User::inRandomOrder()->first()->id,
-            'Centro' => $faker->company,
+            'centros_id' => User::inRandomOrder()->first()->id,
             'Dia' => $faker->date,
             'Hora' => $faker->time,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ]);
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            DB::table('centros')->insert([
+            'Centro' => $faker->city(),
+            'CP' => $faker->postcode,
             'created_at' => now(),
             'updated_at' => now(),
             ]);

@@ -9,4 +9,8 @@ class centros extends Model
 {
     /** @use HasFactory<\Database\Factories\CentrosFactory> */
     use HasFactory;
+
+    public function citas(){
+        return $this->belongsTo(cita::class);
+    }
 }

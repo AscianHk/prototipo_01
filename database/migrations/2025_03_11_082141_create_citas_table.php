@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\centros;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(User::class);
-            $table->string('Centro');
+            $table->foreignIdFor(centros::class);
             $table->date('Dia');
             $table->time('Hora');
         });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\centros;
 use App\Models\cita;
 use App\Models\credentials;
 use App\Models\User;
@@ -98,12 +99,28 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/pedir_cita', function(){
         return view('/Citas/pedir_cita')
-        ->with('citas', cita::all());
+        ->with('citas', cita::all())
+        ->with('centros', centros::all());
+    });
+    Route::post('/pedir_cita', function(Request $request){
+        $cita = new cita();
+        $cita->user_id = Auth::user()->id;
+        $cita->centros_id = $request->input('centro_id');
+        $cita->Dia = $request->input('Dia');
+        $cita->Hora = $request->input('Hora');
+        $cita->save();
+
+        return redirect('/')->with('success', 'Cita creada correctamente.');
     });
 
     Route::get('/ver_citas', function(){
-        return view('/Citas/ver_citas')
-        ->with('citas', cita::all());
+        $user_id = Auth::id();
+        $citas = DB::table('citas')
+            ->where('user_id', $user_id)
+            ->get();
+        
+        return view('/Citas/citas')
+            ->with('citas', $citas);
     });
 
 

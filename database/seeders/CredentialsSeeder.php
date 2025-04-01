@@ -5,6 +5,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Credentials;
 use Faker\Factory as Faker;
 
+use function PHPUnit\Framework\isInt;
+
 class CredentialsSeeder extends Seeder
 {     
     public function run()

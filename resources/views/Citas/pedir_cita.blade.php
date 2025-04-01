@@ -39,11 +39,8 @@
                 <div class="space-y-2">
                     <label for="centro" class="block text-sm font-medium text-gray-700">Centro</label>
                     <select name="centro_id" id="centro" class="form-select">
-                        @foreach ($citas as $cita)
-                            <option value="{{$i}}">{{$cita->Centro}}</option>  
-                            @php
-                                $i++;
-                            @endphp  
+                        @foreach ($centros as $centro)
+                            <option value="{{ $centro->id }}">{{ $centro->Centro }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -51,7 +48,7 @@
                 <div class="space-y-2">
                     <label for="fecha" class="block text-sm font-medium text-gray-700">Fecha</label>
                     <input type="date" 
-                           name="fecha" 
+                           name="Dia" 
                            id="fecha" 
                            class="form-input"
                            required>
@@ -60,7 +57,7 @@
                 <div class="space-y-2">
                     <label for="hora" class="block text-sm font-medium text-gray-700">Hora</label>
                     <input type="time" 
-                           name="hora" 
+                           name="Hora" 
                            id="hora" 
                            class="form-input"
                            required>
