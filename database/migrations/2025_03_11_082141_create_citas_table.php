@@ -18,8 +18,9 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(centros::class);
-            $table->date('Dia');
-            $table->time('Hora');
+            $table->date('dia');
+            $table->time('hora');
+            $table->enum('estado', ['Cancelado', 'Pendiente', 'En curso'])->default('Pendiente');
         });
     }
 

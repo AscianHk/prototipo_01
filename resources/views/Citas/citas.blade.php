@@ -65,29 +65,46 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">Hora</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">Centro</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">Estado</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        
+                        @if($citas->isEmpty())
+                        <tr>
+                            <td colspan="4" class="px-6 py-4 text-sm text-gray-700 text-center">No tienes citas programadas.</td>
+                        </tr>
+                        @else
                         @foreach($citas as $cita)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $cita->Dia }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $cita->Hora }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $cita->dia }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $cita->hora }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">   
                                 {{ DB::table('centros')->where('id', $cita->centros_id)->value('Centro') }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                {{-- <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                    {{ $cita->estado == 'Pendiente' ? 'bg-yellow-100 text-yellow-800' : 
-                                       ($cita->estado == 'Confirmada' ? 'bg-green-100 text-green-800' : 
-                                       'bg-red-100 text-red-800') }}">
-                                    {{ $cita->estado ?? 'Pendiente' }}
-                                </span> --}}                                
-                                HAMILTON
+                            <td class="px-6 py-4 whitespace-nowrap">                          
+                                {{$cita->estado}}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                <form action="/citas/{{$cita->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:text-red-800 transition duration-300">Cancelar</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
+
+                <div class="content-center mt-6 col-md-12">
+                    <div class="login">  
+                        <a href="/pedir_cita" class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 text-center w-64">
+                            Realizar cita
+                        </a>
+                    </div>
+                </div>   
             </div>
         </div>
     </div>

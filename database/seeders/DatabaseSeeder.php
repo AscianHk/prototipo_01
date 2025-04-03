@@ -18,9 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         
-       
-        // Usamos Faker para generar datos falsos
-        // $faker = Faker::create();
+    
         DB::table('credentials')->insert([
             'name' => 'Juan',
             'surname' => 'Perez',

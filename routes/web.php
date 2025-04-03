@@ -106,8 +106,8 @@ Route::middleware('auth')->group(function(){
         $cita = new cita();
         $cita->user_id = Auth::user()->id;
         $cita->centros_id = $request->input('centro_id');
-        $cita->Dia = $request->input('Dia');
-        $cita->Hora = $request->input('Hora');
+        $cita->Dia = $request->input('dia');
+        $cita->Hora = $request->input('hora');
         $cita->save();
 
         return redirect('/')->with('success', 'Cita creada correctamente.');
@@ -121,6 +121,16 @@ Route::middleware('auth')->group(function(){
         
         return view('/Citas/citas')
             ->with('citas', $citas);
+    });
+
+    Route::delete('/citas/{id}', function($id){
+        $cita = cita::find($id);
+        if ($cita) {
+            $cita->delete();
+            return redirect('/ver_citas')->with('success', 'Cita eliminada correctamente.');
+        } else {
+            return redirect('/ver_citas')->with('error', 'Cita no encontrada.');
+    }   
     });
 
 
