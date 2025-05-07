@@ -82,8 +82,22 @@
                     Ver Citas
                 </a>
             </div>
+            @if($credentials->Puesto == 'Personal')
+                <div class="login">  
+                    <a href="/administracion" class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 text-center w-64">
+                        Administración
+                    </a>
+                </div>
+
+                <div class="login">
+                    <a href="/agenda" class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 text-center w-64">
+                        Agenda Personal
+                    </a>
+                </div>
+            @endif
         </div>      
     </div>
+    
         
     @endauth
     <footer class="bg-gray-800 text-white p-4 fixed bottom-0 w-full">

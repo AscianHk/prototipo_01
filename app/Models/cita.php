@@ -12,4 +12,11 @@ class cita extends Model
     public function centro(){
         return $this->hasMany(centros::class);
     }
+    protected $fillable = [
+        'centros_id',
+        'dia',
+        'hora',
+        'estado',
+        'user_id'
+    ];
 }

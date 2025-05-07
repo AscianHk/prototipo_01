@@ -4,10 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class autenticado
+class personal
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,11 @@ class autenticado
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
-            return redirect('/login')->with('message', 'Debe iniciar sesión para acceder a esta página');
+        if(!$request->user() || $request->user()->Puesto != 'Personal') {
+            return redirect('/')->with('error', 'No tienes permiso para acceder a esta página.');
         }
+        //Revisa en la base de datos si el usuario que esta intentando acceder es un personal
+
 
         return $next($request);
     }

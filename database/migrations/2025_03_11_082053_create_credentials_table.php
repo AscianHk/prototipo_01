@@ -20,11 +20,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->date('Fecha_Nacimiento');
+            $table->enum('Puesto', ['Ciudadano', 'Personal'])->default('Ciudadano');
+            $table->string('dpto')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

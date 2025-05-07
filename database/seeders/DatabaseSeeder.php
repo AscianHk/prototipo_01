@@ -23,11 +23,24 @@ class DatabaseSeeder extends Seeder
             'name' => 'Juan',
             'surname' => 'Perez',
             'user_id' => 1,
+            'Puesto' => 'Personal',
+            'Fecha_Nacimiento' => '1999-12-12',
+        ]);
+
+
+        DB::table('credentials')->insert([
+            'name' => 'Jose',
+            'surname' => 'Mendez',
+            'user_id' => 2,
+            'Puesto' => 'Ciudadano',
             'Fecha_Nacimiento' => '1999-12-12',
         ]);
         
         DB::table('users')->insert([
             'SIP' => '123456',
+        ]);
+        DB::table('users')->insert([
+            'SIP' => '654321',
         ]);
 
         // Insert 10 entries into the 'citas' table

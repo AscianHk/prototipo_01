@@ -91,6 +91,9 @@
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-800 transition duration-300">Cancelar</button>
                                 </form>
+                                <button type="button"   class="text-blue-600 hover:text-blue-800 transition duration-300" data-modal-toggle="defaultModal">
+                                    <a href="/modificar_cita/{{$cita->id}}">Modificar</a>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
